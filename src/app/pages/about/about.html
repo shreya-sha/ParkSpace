@@ -1,0 +1,46 @@
+
+  <main class="container py-5">
+    <section class="hero p-4 p-md-5 mb-4 animated-fade-up">
+      <span class="hero-pill">What this portal is about</span>
+      <h1 class="display-6 fw-bold">A no-brokerage parking space marketplace for city renters</h1>
+      <p class="mb-0">ParkSpace solves a practical city problem: rented flats without parking. Owners with unused parking slots can list them, and customers can discover + book by city and area.</p>
+    </section>
+
+    <div class="row g-4 mb-4">
+      <div class="col-lg-7">
+        <div class="info-card animated-pop delay-1">
+          <h4 class="mb-3">Core MVP capabilities</h4>
+          <ul class="mb-0 text-secondary">
+            <li>Role-based users: Owner, Customer, Admin</li>
+            <li>Vehicle profile with car-size support</li>
+            <li>Space listings with city/locality and monthly pricing</li>
+            <li>Plan based inquiry visibility (Free/Basic/Premium)</li>
+            <li>Booking lifecycle with active/inactive status</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="info-card animated-pop delay-2">
+          <h4 class="mb-3">Who uses it</h4>
+          <div class="mb-2"><strong>Customer:</strong> searches parking, adds vehicle, buys plan, books space.</div>
+          <div><strong>Owner:</strong> posts parking inventory, uploads images, manages bookings.</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mb-4">
+      <h2 class="section-title mb-3">Suggested Angular page mapping</h2>
+      <div class="table-like bg-white">
+        <div class="row fw-semibold bg-light">
+          <div class="col-md-4 cell">Template Page</div>
+          <div class="col-md-4 cell">Angular Route (example)</div>
+          <div class="col-md-4 cell">Primary API Group</div>
+        </div>
+        <div class="row"><div class="col-md-4 cell">search-spaces.html</div><div class="col-md-4 cell">/spaces/search</div><div class="col-md-4 cell">parkSpaceParkingSpaces</div></div>
+        <div class="row"><div class="col-md-4 cell">parking-space-details.html</div><div class="col-md-4 cell">/spaces/:id</div><div class="col-md-4 cell">view-parking-space + images</div></div>
+        <div class="row"><div class="col-md-4 cell">subscription-plans.html</div><div class="col-md-4 cell">/plans</div><div class="col-md-4 cell">parkSpaceSubscriptionPlans</div></div>
+        <div class="row"><div class="col-md-4 cell">owner-create-space.html</div><div class="col-md-4 cell">/owner/spaces/new</div><div class="col-md-4 cell">parkSpaceParkingSpaces</div></div>
+        <div class="row"><div class="col-md-4 cell">bookings.html</div><div class="col-md-4 cell">/bookings</div><div class="col-md-4 cell">parkSpaceParkingBookings</div></div>
+      </div>
+    </section>
+  </main>

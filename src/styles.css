@@ -1,0 +1,291 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --brand-primary: #0b5ea8;
+  --brand-secondary: #1fa89a;
+  --brand-accent: #f59f0a;
+  --brand-dark: #0f1f33;
+  --brand-muted: #5f6b7a;
+  --bg-soft: #f4f8fc;
+  --card-border: #dfe8f2;
+  --success-soft: #e7f8f0;
+  --danger-soft: #fdecee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--brand-dark);
+  background: linear-gradient(180deg, #f8fbff 0%, #eef5fc 100%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-nav {
+  background: rgba(11, 31, 51, 0.94);
+  backdrop-filter: blur(6px);
+}
+
+.site-brand {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.site-brand span {
+  color: var(--brand-accent);
+}
+
+.nav-link-custom {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+  color: #ffffff;
+}
+
+.hero {
+  position: relative;
+  background: radial-gradient(circle at 15% 25%, rgba(31, 168, 154, 0.25), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(245, 159, 10, 0.22), transparent 50%),
+    linear-gradient(120deg, #0b5ea8 0%, #1c7cbc 40%, #1fa89a 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.hero .hero-pill {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+.section-subtitle {
+  color: var(--brand-muted);
+  max-width: 740px;
+}
+
+.glass-card,
+.info-card,
+.flow-card,
+.pricing-card,
+.data-card,
+.form-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgba(16, 36, 66, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.info-card {
+  padding: 1.2rem;
+  height: 100%;
+}
+
+.info-card h5 {
+  margin-bottom: 0.65rem;
+}
+
+.flow-card {
+  padding: 1rem;
+  height: 100%;
+}
+
+.flow-step {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-primary);
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.pricing-card {
+  padding: 1.3rem;
+  height: 100%;
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--brand-secondary);
+  transform: translateY(-4px);
+}
+
+.price-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.table-like {
+  border: 1px solid var(--card-border);
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.table-like .row {
+  margin: 0;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.table-like .row:last-child {
+  border-bottom: none;
+}
+
+.table-like .cell {
+  padding: 0.8rem;
+  font-size: 0.92rem;
+}
+
+.badge-soft-success {
+  background: var(--success-soft);
+  color: #147d52;
+}
+
+.badge-soft-danger {
+  background: var(--danger-soft);
+  color: #b4233f;
+}
+
+.badge-soft-primary {
+  background: #e9f2fc;
+  color: #0b5ea8;
+}
+
+.footer {
+  background: #0e223b;
+  color: #b9c8da;
+}
+
+.footer a {
+  color: #d8e5f5;
+}
+
+.form-card {
+  padding: 1.2rem;
+}
+
+.custom-input,
+.custom-select,
+.custom-textarea {
+  border-radius: 0.75rem;
+  border: 1px solid #cfdae7;
+  padding: 0.68rem 0.8rem;
+}
+
+.custom-input:focus,
+.custom-select:focus,
+.custom-textarea:focus {
+  border-color: #69a8df;
+  box-shadow: 0 0 0 0.2rem rgba(11, 94, 168, 0.15);
+}
+
+.animated-fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.animated-pop {
+  animation: popIn 0.55s ease forwards;
+}
+
+.animated-float {
+  animation: floatY 4.6s ease-in-out infinite;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.22s;
+}
+
+.delay-3 {
+  animation-delay: 0.34s;
+}
+
+.delay-4 {
+  animation-delay: 0.46s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.kpi-box {
+  padding: 0.9rem;
+  border-radius: 0.85rem;
+  border: 1px dashed #b8cae0;
+  background: #f8fbff;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    border-radius: 0.9rem;
+  }
+
+  .price-value {
+    font-size: 1.6rem;
+  }
+}
