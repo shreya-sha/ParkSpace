@@ -1,40 +1,84 @@
-  <main class="container py-4 py-md-5">
-    <section class="text-center mb-4 animated-fade-up">
-      <h1 class="section-title mb-2">Create your ParkSpace account</h1>
-      <p class="section-subtitle mx-auto">Single template for both customer and owner onboarding.</p>
-    </section>
+<main class="container py-4 py-md-5">
+  <section class="text-center mb-4 animated-fade-up">
+    <h1 class="section-title mb-2">Create your ParkSpace account</h1>
+    <p class="section-subtitle mx-auto">Single template for both customer and owner onboarding.</p>
+  </section>
 
-    <div class="row g-4 center">
-      <div class="col-lg-6">
-         <form [formGroup]="userform">
+  <div class="row g-4 center">
+    <div class="col-lg-6">
+      <form [formGroup]="userform">
         <div class="form-card animated-pop delay-1">
-          <h4 class="mb-3"><i class="bi bi-car-front-fill"></i> Customer Registration</h4>
+          <h4 class="mb-3"><i class="bi bi-car-front-fill"></i><i class="fa fa-user"></i> Customer Registration</h4>
           <div class="row g-3">
-             
-            <div class="col-md-6"><label class="form-label">Full Name</label><input  class="form-control custom-input" formControlName="fullName"/></div>
-            <div class="col-md-6"><label class="form-label">Phone</label><input class="form-control custom-input"  formControlName="phoneNumber"/></div>
-            <div class="col-md-6"><label class="form-label">Email</label><input class="form-control custom-input" formControlName="email"/></div>
+
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input class="form-control custom-input" formControlName="fullName" />
+              <div class="text-danger"
+                *ngIf="userform.get('fullName')?.touched || userform.get('fullname')?.dirty && userform.get('fullName')?.invalid">
+                <small *ngIf="userform.get('fullName')?.errors?.['required']">
+                  Fullname is required
+                </small>
+              </div>
+            </div>
+
+            <div class="col-md-6"><label class="form-label">Phone</label>
+              <input class="form-control custom-input" formControlName="phoneNumber" />
+              <div class="text-danger"
+                *ngIf="userform.get('phoneNumber')?.touched || userform.get('phoneNumber')?.dirty && userform.get('phoneNumber')?.invalid ">
+                <small *ngIf="userform.get('phoneNumber')?.errors?.['required']">
+                  phoneNumber is required
+                </small>
+              </div>
+            </div>
+
+            <div class="col-md-6"><label class="form-label">Email</label>
+              <input class="form-control custom-input" formControlName="email" />
+              <div class="text-danger" *ngIf="userform.get('email')?.touched || userform.get('email')?.dirty && userform.get('email')?.invalid ">
+                <small *ngIf="userform.get('email')?.errors?.['required']">
+                  Email is required
+                </small>
+                <small *ngIf="userform.get('email')?.errors?.['email']">
+                  Email is not proper
+                </small>
+              </div>
+            </div>
             <div class="col-md-6"><label class="form-label">Role</label>
-            <select class="form-select custom-select" formControlName="roleId">
-                <option [value]="item.roleId" *ngFor="let item of UserList$ |async"> {{item.roleName}}</option>
-            </select>
+              <select class="form-select custom-select" formControlName="roleId">
+                
+                <option value="">Select Roll</option>
+                 <div class="text-danger"
+                  *ngIf="userform.get('roleId')?.touched || userform.get('roleId')?.dirty && userform.get('roleId')?.invalid ">
+                  <small *ngIf="userform.get('roleId')?.errors?.['required']">
+                    Roll is required
+                  </small>
+                </div>
+                <option [value]="item.roleId" *ngFor="let item of UserRoles$ |async"> {{item.roleName}}</option>
+              </select>
             </div>
             <div class="col-md-6"><label class="form-label">City</label>
-                <input class="form-control custom-input" formControlName="city" />
+              <input class="form-control custom-input" formControlName="city" />
             </div>
             <div class="col-md-6"><label class="form-label">Password</label>
-                <input type="password" class="form-control custom-input" formControlName="passwordHash" />
+              <input type="password" class="form-control custom-input" formControlName="passwordHash" />
+              <div class="text-danger"
+                *ngIf="userform.get('passwordHash')?.touched || userform.get('passwordHash')?.dirty && userform.get('passwordHash')?.invalid ">
+                <small *ngIf="userform.get('passwordHash')?.errors?.['required']">
+                  Password is required
+                </small>
+              </div>
+
             </div>
             <div class="col-12 d-grid">
-                <button type="submit" (click)="OnRegister()" class="btn btn-primary">Register as Customer</button>
+              <button type="submit" (click)="OnRegister()" class="btn btn-primary" [disabled]="userform.invalid">Register as Customer</button>
             </div>
-        <!-- </form>   -->
+            <!-- </form>   -->
+          </div>
         </div>
-        </div>
-    </form>
-      </div>
-    </div> 
-<!--     
+      </form>
+    </div>
+  </div>
+  <!--     
     <div class="row g-4">
       
       <div class="col-lg-6">
@@ -51,5 +95,4 @@
         </div>
       </div>
     </div> -->
-  </main>
-
+</main>

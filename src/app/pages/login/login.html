@@ -1,47 +1,70 @@
-<p>login works!</p>
+<main class="container py-5">
+  <div class="row g-4 align-items-stretch">
+    <div class="col-lg-5">
+      <section class="hero p-4 h-100 animated-fade-up">
+        <span class="hero-pill">Access your account</span>
+        <h2 class="fw-bold mb-3">Customer and Owner login</h2>
+        <p>Login to search and book spaces, manage vehicles, post parking slots, and track subscriptions.</p>
+        <ul>
+          <li>Customer: search + view + subscribe + book</li>
+          <li>Owner: create listing + manage bookings</li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-lg-7">
+      <section class="form-card animated-pop delay-1">
+        <form #loginForm="ngForm" (ngSubmit)="OnLogin(loginForm)">
 
-  <main class="container py-5">
-    <div class="row g-4 align-items-stretch">
-      <div class="col-lg-5">
-        <section class="hero p-4 h-100 animated-fade-up">
-          <span class="hero-pill">Access your account</span>
-          <h2 class="fw-bold mb-3">Customer and Owner login</h2>
-          <p>Login to search and book spaces, manage vehicles, post parking slots, and track subscriptions.</p>
-          <ul>
-            <li>Customer: search + view + subscribe + book</li>
-            <li>Owner: create listing + manage bookings</li>
-          </ul>
-        </section>
-      </div>
-      <div class="col-lg-7">
-        <section class="form-card animated-pop delay-1">
-            <form>
 
-            
           <h3 class="mb-3">Sign In</h3>
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label">Email</label>
-              <input class="form-control custom-input" placeholder="name@email.com" />
+              <input class="form-control custom-input" placeholder="name@email.com" [(ngModel)]="loginobj.email"
+                name="email" #email="ngModel" required email />
+              <div class="text-danger" *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.errors?.['required']">
+                  Email is required
+                </small>
+                <small *ngIf="email.errors?.['email']">
+                  Enter valid email
+                </small>
+
+              </div>
+
             </div>
+
             <div class="col-md-6">
               <label class="form-label">Password</label>
-              <input type="password" class="form-control custom-input" placeholder="********" />
+              <input type="password" class="form-control custom-input" placeholder="********"
+                [(ngModel)]="loginobj.passwordHash" name="passwordHash" #passwordHash="ngModel" required
+                minlength="5" />
+              <div class="text-danger" *ngIf="passwordHash.invalid && passwordHash.touched">
+                <small *ngIf="passwordHash.errors?.['required']">
+                  Password is required
+                </small>
+
+                <small *ngIf="passwordHash.errors?.['minlength']">
+                  Minimum 5 characters required
+                </small>
+              </div>
             </div>
-            <div class="col-md-6">
+
+            <!-- <div class="col-md-6">
               <label class="form-label">Role</label>
               <select class="form-select custom-select">
-                <option>Customer</option>
+                <option *ngFor="let item of UserRoles$ | async"> {{item.roleName}} </option>
                 
               </select>
-            </div>
+            </div> -->
             <div class="col-md-6 d-flex align-items-end">
-              <button class="btn btn-primary w-100">Login</button>
+              <!-- (click)="OnLogin()" -->
+              <button class="btn btn-primary w-100" type="submit" [disabled]="loginForm.invalid">Login</button>
             </div>
           </div>
-          </form>
-          <div class="small mt-3 text-secondary">No account? <a routerLink="/register-user">Create one</a></div>
-        </section>
-      </div>
+        </form>
+        <div class="small mt-3 text-secondary">No account? <a routerLink="/register-user">Create one</a></div>
+      </section>
     </div>
-  </main>
+  </div>
+</main>
