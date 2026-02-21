@@ -1,0 +1,55 @@
+<main class="container py-4 py-md-5">
+    <form #serchForm="ngForm" (ngSubmit)="OnSearch(serchForm)">
+    <section class="form-card mb-4 animated-fade-up">
+      <h2 class="section-title mb-1">Search by City and Area</h2>
+      <p class="section-subtitle mb-3">Filter parking spaces exactly like city-based rental portals.</p>
+      <div class="row g-3">
+        <div class="col-md-3"><input class="form-control custom-input" (input)="Searchspacs()" placeholder="City (e.g., Pune)" name="city" [(ngModel)]="searchobj.city" /></div>
+        <div class="col-md-3"><input class="form-control custom-input" placeholder="Area / Locality" /></div>
+        <div class="col-md-2">
+          <select class="form-select custom-select" [(ngModel)]="searchobj.carSizeId" name="carSizeId">
+            <option>Car Size</option>
+        
+            @for(car of carlist(); track $index){
+                    <option [value]="car.carSizeId"  >{{car.sizeName}}</option>
+            }
+           
+          </select>
+        </div>
+        <div class="col-md-2"><input class="form-control custom-input" placeholder="Max Price" name="price" [(ngModel)]="searchobj.maxPricePerMonth" /></div>
+        <div class="col-md-2 d-grid"><button class="btn btn-primary">Search</button></div>
+      </div>
+    </section>
+</form>
+    <section class="info-card mb-3 animated-pop delay-1">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          <strong>Current Plan:</strong> Free Plan
+          <span class="badge badge-soft-primary ms-2">2 view limit / month</span>
+        </div>
+        <a href="subscription-plans.html" class="btn btn-outline-primary btn-sm">Upgrade Plan</a>
+      </div>
+    </section>
+
+    <section class="row g-3">
+      
+        @for(space of parkingSpace(); track $index){
+              <div class="col-lg-6">
+        <div class="info-card h-100 animated-fade-up delay-1">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">{{space.title}}</h5>
+            <span class="badge badge-soft-success">Available</span>
+          </div>
+          <p class="text-secondary mb-2">City: {{space.city}}  | Size: {{space.supportedCarSize}}</p>
+          <p class="text-secondary mb-3"></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <strong class="text-primary">INR {{space.pricePerMonth}} / month</strong>
+            <a href="parking-space-details.html" class="btn btn-sm btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+        }
+     
+     
+    </section>
+  </main>

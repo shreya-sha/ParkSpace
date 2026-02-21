@@ -6,6 +6,7 @@ import { User } from '../../services/user';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Observable, Subscription } from 'rxjs';
 import { IResponse } from '../../models/IResponse';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class Login implements OnInit, OnDestroy {
 
   subscription: Subscription[] = [];
 
-  constructor(private http: User) {
+  constructor(private http: User,private auth:Auth) {
 
   }
 
@@ -35,7 +36,8 @@ export class Login implements OnInit, OnDestroy {
         alert(res.message);
         form.reset();
         // this.ClearFormcontrols();
-        localStorage.setItem('user', JSON.stringify(res.data));
+         this.auth.getUser();
+       // localStorage.setItem('user', JSON.stringify(res.data));
 
       },
       error: (err: any) => {

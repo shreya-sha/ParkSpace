@@ -4,5 +4,8 @@ export const links={
      'LoginUser':'https://feestracking.freeprojectapi.com/api/parkSpaceUsers/login',
      'PostParkSpace':'https://feestracking.freeprojectapi.com/api/parkSpaceParkingSpaces/create-parking-space',
      'GetCarSizes':'https://feestracking.freeprojectapi.com/api/parkSpaceCarSizes/get-all-car-sizes',
-     'GetParkingSpaces':'https://feestracking.freeprojectapi.com/api/parkSpaceParkingSpaces/get-all-parking-spaces'
+      'GetParkingSpaces':'https://feestracking.freeprojectapi.com/api/parkSpaceParkingSpaces/get-all-parking-spaces',
+    'GetOwnerParkingSpace':'https://feestracking.freeprojectapi.com/api/parkSpaceParkingSpaces/get-owner-parking-spaces/',
+    'SearchParkingSpace':'https://feestracking.freeprojectapi.com/api/parkSpaceParkingSpaces/search-parking-spaces',
+    'GetAllParkingSpaces':'https://feestracking.freeprojectapi.com/api/parkSpaceParkingSpaces/get-all-parking-spaces'
 }

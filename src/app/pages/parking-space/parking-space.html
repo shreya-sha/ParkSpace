@@ -1,67 +1,121 @@
- <main class="container py-4 py-md-5">
+<main class="container py-4 py-md-5">
     <section class="form-card animated-fade-up">
-      <h2 class="section-title mb-3">Post a new parking space</h2>
-     <form [formGroup]="parkSpaceForm">
-      <div class="row g-3">
-        <div class="col-md-6">
-            <label class="form-label">Listing Title</label>
-            <input class="form-control custom-input"  formControlName= "title" placeholder="Covered Parking near Metro" />
-        </div>
-        <div class="col-md-6"> 
-            <label class="form-label">Supported Car Size</label>
-      supportedCarSizeId :new FormControl(1,[]),
-            <select class="form-select custom-select" formControlName= "supportedCarSizeId">
-                
-            
-                <option *ngFor="let item of carList()"[value]=item.carSizeId>{{item.sizeName}}</option>
-            </select>
-        </div>
-        <div class="col-md-6 "><label class="form-label">City</label>
-        <input class="form-control custom-input" formControlName= "city" placeholder="Pune" />
-       </div>
-        
-       <!-- <div class="col-md-6">
+        <h2 class="section-title mb-3">Post a new parking space</h2>
+         <a routerLink="/owner-listings" class="btn btn-outline-secondary px-4 top-link">View My Listings</a>
+        <form [formGroup]="parkSpaceForm">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Listing Title</label>
+                    <!-- {{ parkSpaceForm.value | json }} -->
+                    <input class="form-control custom-input" formControlName="title"
+                        placeholder="Covered Parking near Metro" />
+
+                    <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('title')?.touched || parkSpaceForm.get('title')?.dirty && parkSpaceForm.get('title')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('title')?.errors?.['required']">
+                            Title is required
+                        </small>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Supported Car Size</label>
+
+                    <select class="form-select custom-select" formControlName="supportedCarSizeId">
+                        <option *ngFor="let item of carList()" [value]=item.carSizeId>{{item.sizeName}}</option>
+                    </select>
+                </div>
+                <div class="col-md-6 "><label class="form-label">City</label>
+                    <input class="form-control custom-input" formControlName="city" placeholder="Pune" />
+                  <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('city')?.touched || parkSpaceForm.get('city')?.dirty && parkSpaceForm.get('city')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('city')?.errors?.['required']">
+                            City is required
+                        </small>
+                    </div>
+
+
+                </div>
+
+                <!-- <div class="col-md-6">
             <label class="form-label">Area / Locality</label>
             <input class="form-control custom-input" formControlName= "addressLine1" placeholder="Baner" />
         </div>
          -->
-        <div class="col-md-6">
-            <label class="form-label">Address Line 1</label>
-            <input class="form-control custom-input" formControlName= "addressLine1" />
-        </div>
+                <div class="col-md-6">
+                    <label class="form-label">Address Line 1</label>
+                    <input class="form-control custom-input" formControlName="addressLine1" />
 
-        <div class="col-md-6">
-            <label class="form-label">Address Line 2</label>
-            <input class="form-control custom-input" formControlName= "addressLine2" />
-        </div>
-        
-        <div class="col-md-6">
-            <label class="form-label">Pincode</label>
-            <input class="form-control custom-input" formControlName= "pincode"/>
-        </div>
-        
-        <div class="col-md-6"><label class="form-label">Price Per Month</label>
-            <input class="form-control custom-input" placeholder="2500" formControlName= "pricePerMonth"/>
-        </div>
-        
-        <div class="col-12"><label class="form-label">Description</label>
-            <textarea formControlName= "description" class="form-control custom-textarea" rows="4" placeholder="Security, access, landmarks">
+                     <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('addressLine1')?.touched || parkSpaceForm.get('addressLine1')?.dirty && parkSpaceForm.get('addressLine1')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('addressLine1')?.errors?.['required']">
+                            AddressLine1 is required
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Address Line 2</label>
+                    <input class="form-control custom-input" formControlName="addressLine2" />
+                    <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('addressLine2')?.touched || parkSpaceForm.get('addressLine2')?.dirty && parkSpaceForm.get('addressLine2')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('addressLine2')?.errors?.['required']">
+                            AddressLine2 is required
+                        </small>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Pincode</label>
+                    <input class="form-control custom-input" formControlName="pincode" />
+                    <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('pincode')?.touched || parkSpaceForm.get('pincode')?.dirty && parkSpaceForm.get('pincode')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('pincode')?.errors?.['required']">
+                            Pincode is required
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6"><label class="form-label">Price Per Month</label>
+                    <input class="form-control custom-input" placeholder="2500" formControlName="pricePerMonth" />
+                     <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('pricePerMonth')?.touched || parkSpaceForm.get('pricePerMonth')?.dirty && parkSpaceForm.get('pricePerMonth')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('pricePerMonth')?.errors?.['required']">
+                            Price Per Month is required
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="col-12"><label class="form-label">Description</label>
+                    <textarea formControlName="description" class="form-control custom-textarea" rows="4"
+                        placeholder="Security, access, landmarks">
 
             </textarea>
-        </div>
-        
-        <!-- <div class="col-12">
+             <div class="text-danger"
+                        *ngIf="parkSpaceForm.get('description')?.touched || parkSpaceForm.get('description')?.dirty && parkSpaceForm.get('description')?.invalid ">
+                        <small *ngIf="parkSpaceForm.get('description')?.errors?.['required']">
+                            Description is required
+                        </small>
+                    </div>
+
+                </div>
+
+                <!-- <div class="col-12">
             <label class="form-label">Image URL(s)</label>
             <input class="form-control custom-input" placeholder="https://..." />
         </div> -->
 
-      </div>
-      
-      <div class="d-flex flex-wrap gap-2 mt-3">
-        <button class="btn btn-primary px-4" (click)="OnSave()">Save Listing</button>
-        <a routerLink="/owner-listings" class="btn btn-outline-secondary px-4">View My Listings</a>
-      </div>
-      </form>
-    </section>
-  </main>
+            </div>
 
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                <button class="btn btn-primary px-4" [disabled]="parkSpaceForm.invalid" type="submit" (click)="OnSave()">Save Listing</button>
+               
+            </div>
+        </form>
+    </section>
+</main>

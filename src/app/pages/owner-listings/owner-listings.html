@@ -1,26 +1,34 @@
 <main class="container py-4 py-md-5">
-    <section class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-      <h2 class="section-title mb-0">My Parking Listings</h2>
-      <a routerLink="/park-space" class="btn btn-primary">+ New Listing</a>
-    </section>
+  <section class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <h2 class="section-title mb-0">My Parking Listings</h2>
+    <a routerLink="/park-space" class="btn btn-primary">+ New Listing</a>
+  </section>
 
-    <div class="row g-3">
-        @for(space of spaceLists(); track $index){
-            <div class="col-lg-6">
-        <div class="info-card animated-fade-up delay-1">
-          <div class="d-flex justify-content-between align-items-start mb-2"><h5 class="mb-0">{{space.title}}</h5>
-            <span class="badge badge-soft-success">{{space.isAvailable}}</span></div>
-          <p class="text-secondary mb-2">{{space.city}} | Baner | {{space.supportedCarSize}} | INR {{space.pricePerMonth}} / month</p>
-          <div class="d-flex gap-2">
-            <button class="btn btn-sm btn-outline-primary">Edit</button>
-            <button class="btn btn-sm btn-outline-secondary">Add Images</button>
-            <button class="btn btn-sm btn-outline-danger">Delete</button>
-          </div>
+  <div class="row g-3">
+    @for(space of spaceLists(); track $index){
+    <div class="col-lg-6">
+      <div class="info-card animated-fade-up delay-1">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <h5 class="mb-0">{{space.title}}</h5>
+          {{space.isAvailable}}
+          @if(space.isAvailable){
+          <span class="badge badge-soft-success"> Available</span>
+          }
+          @else {
+          <span class="badge badge-soft-danger"> Not Available</span>
+          }
+        </div>
+        <p class="text-secondary mb-2">{{space.city}} | {{space.supportedCarSize}} | INR {{space.pricePerMonth}} / month
+        </p>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-primary">Edit</button>
+          <button class="btn btn-sm btn-outline-secondary">Add Images</button>
+          <button class="btn btn-sm btn-outline-danger">Delete</button>
         </div>
       </div>
+    </div>
     }
 
-      
-    </div>
-  </main>
 
+  </div>
+</main>

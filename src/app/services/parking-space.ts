@@ -16,4 +16,11 @@ export class ParkingSpaces {
     return this.http.post(links.PostParkSpace,obj);
   }
 
+  SearchParkingSpaces(obj:any){
+    return this.http.post(links.SearchParkingSpace,obj);
+  }
+  GetAllSpaces(){
+    return this.http.get(links.GetAllParkingSpaces);
+  }
+ 
 }
