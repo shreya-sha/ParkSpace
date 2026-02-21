@@ -7,10 +7,11 @@ import { SearchSpace } from '../../models/SearchSpace';
 import { ParkingSpaces } from '../../services/parking-space';
 import { ParkingSpace } from '../parking-space/parking-space';
 import { IResponse } from '../../models/IResponse';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search-spaces',
-  imports: [FormsModule],
+  imports: [FormsModule,RouterLink],
   templateUrl: './search-spaces.html',
   styleUrl: './search-spaces.css',
 })
@@ -43,7 +44,7 @@ export class SearchSpaces implements OnInit {
    
   }
   Searchspacs(){
-    
+
    // alert('hii');
   }
   GetAllSPaces(){

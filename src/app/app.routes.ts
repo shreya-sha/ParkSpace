@@ -9,6 +9,7 @@ import { Component, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR } from '@angular/cor
 import { ParkingSpace } from './pages/parking-space/parking-space';
 import { OwnerListings } from './pages/owner-listings/owner-listings';
 import { SearchSpaces } from './pages/search-spaces/search-spaces';
+import { ParkingSpaceDetails } from './pages/parking-space-details/parking-space-details';
 
 export const routes: Routes =
     [{
@@ -50,6 +51,9 @@ export const routes: Routes =
             {
                 path:'find-parking',
                 component:SearchSpaces
+            },{
+                path:'parking-space-details',
+                component:ParkingSpaceDetails
             }
         ]
     }
