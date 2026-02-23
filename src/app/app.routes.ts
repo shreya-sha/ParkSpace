@@ -10,6 +10,8 @@ import { ParkingSpace } from './pages/parking-space/parking-space';
 import { OwnerListings } from './pages/owner-listings/owner-listings';
 import { SearchSpaces } from './pages/search-spaces/search-spaces';
 import { ParkingSpaceDetails } from './pages/parking-space-details/parking-space-details';
+import { CustomerVehicles } from './pages/Customer/customer-vehicles/customer-vehicles';
+import { SubscriptionPlans } from './pages/subscription-plans/subscription-plans';
 
 export const routes: Routes =
     [{
@@ -52,8 +54,16 @@ export const routes: Routes =
                 path:'find-parking',
                 component:SearchSpaces
             },{
-                path:'parking-space-details',
+                path:'parking-space-details/:parkingSpaceId',
                 component:ParkingSpaceDetails
+            },
+            {
+                path:'my-vehicles',
+                component:CustomerVehicles
+            },
+            {
+                path:'subscription-plans',
+                component:SubscriptionPlans
             }
         ]
     }

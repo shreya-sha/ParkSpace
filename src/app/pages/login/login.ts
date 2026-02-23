@@ -36,8 +36,8 @@ export class Login implements OnInit, OnDestroy {
         alert(res.message);
         form.reset();
         // this.ClearFormcontrols();
-         this.auth.getUser();
-       // localStorage.setItem('user', JSON.stringify(res.data));
+           // this.auth.getUser();
+       localStorage.setItem('user', JSON.stringify(res.data));
 
       },
       error: (err: any) => {

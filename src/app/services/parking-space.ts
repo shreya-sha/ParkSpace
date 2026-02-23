@@ -22,5 +22,8 @@ export class ParkingSpaces {
   GetAllSpaces(){
     return this.http.get(links.GetAllParkingSpaces);
   }
+  GetParkingSpaceById(ParkingId:number){
+      return this.http.get(links.GetParkingSpaceByID + ParkingId);
+  }
  
 }

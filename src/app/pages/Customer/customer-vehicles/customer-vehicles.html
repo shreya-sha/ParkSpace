@@ -1,0 +1,60 @@
+ <main class="container py-4 py-md-5">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <form [formGroup]="vehicleForm">
+        <div class="form-card animated-fade-up">
+          <h4 class="mb-3">Add New Vehicle</h4>
+          <div class="row g-3">
+            <div class="col-12">
+                <label class="form-label">Vehicle Number</label>
+                <input class="form-control custom-input" placeholder="MH12AB1234" formControlName="vehicleNumber" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Brand</label>
+                <input class="form-control custom-input" placeholder="Hyundai" formControlName="vehicleBrand"/>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Model</label>
+                <input class="form-control custom-input" placeholder="i20" formControlName="vehicleModel"/>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Car Size</label>
+                <select class="form-select custom-select" formControlName="carSizeId">
+                   <option>Select Car size</option>
+                    @for(car of carList(); track $index){
+                        <option [value]="car.carSizeId">{{car.sizeName}}</option>
+                    }
+                                       
+                </select>
+            </div>
+            <div class="col-12 d-grid">
+                <button class="btn btn-primary" type="submit" (click)="AddVehicle()">Save Vehicle</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="data-card p-3 animated-pop delay-1">
+          <h4 class="mb-3">My Vehicles</h4>
+          <div class="table-like">
+            <div class="row fw-semibold bg-light">
+                <div class="col-3 cell">Number</div><div class="col-3 cell">Brand</div><div class="col-2 cell">Model</div><div class="col-2 cell">Size</div><div class="col-2 cell">Action</div></div>
+         
+           @for(veh of vehiclesList();track $index){
+           
+                <div class="row">
+                <div class="col-3 cell">{{veh.vehicleNumber}}</div>
+                <div class="col-3 cell">{{veh.vehicleBrand}}</div>
+                <div class="col-2 cell">{{veh.vehicleModel}}</div>
+                <div class="col-2 cell">{{veh.carSize}}</div>
+                <div class="col-2 cell"><a href="#">Edit</a></div>
+            </div>
+        }
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+

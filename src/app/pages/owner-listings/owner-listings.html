@@ -10,13 +10,21 @@
       <div class="info-card animated-fade-up delay-1">
         <div class="d-flex justify-content-between align-items-start mb-2">
           <h5 class="mb-0">{{space.title}}</h5>
-          {{space.isAvailable}}
+          <!-- {{space.isAvailable}}
           @if(space.isAvailable){
           <span class="badge badge-soft-success"> Available</span>
           }
           @else {
           <span class="badge badge-soft-danger"> Not Available</span>
-          }
+          } -->
+
+          <span 
+  class="badge"
+  [ngClass]="space.isAvailable ? 'bg-success' : 'bg-danger'">
+
+  {{ space.isAvailable ? 'Available' : 'Not Available' }}
+
+</span>
         </div>
         <p class="text-secondary mb-2">{{space.city}} | {{space.supportedCarSize}} | INR {{space.pricePerMonth}} / month
         </p>
