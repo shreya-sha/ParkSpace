@@ -1,6 +1,6 @@
   <nav class="site-nav py-3">
     <div class="container d-flex flex-wrap gap-3 align-items-center justify-content-between">
-      <a class="site-brand fs-4" href="index.html">Park<span>Space</span></a>
+      <a class="site-brand fs-4" href="index.html">Park<span>Space</span> </a> <small class="text-light"> Welcome, {{ Name |async }} </small>
       <div class="d-flex flex-wrap gap-3">
         <a class="nav-link-custom active" routerLink="home">Home</a>
         <a class="nav-link-custom" routerLink ="About">About</a>
@@ -9,6 +9,8 @@
         <a class="nav-link-custom" routerLink="login">Login</a>
         <a class="nav-link-custom" routerLink="park-space">ParkSpace</a>
         <a class="nav-link-custom" routerLink="my-vehicles">My Vehicles</a>
+        <button class="btn btn-link"(click)="Logout()">Logout</button>
+
         <!-- <a class="nav-link-custom" routerLink="">Details</a> -->
         <!-- <a class="nav-link-custom" routerLink="find-parking">Search Spaces</a> -->
       </div>

@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Auth {
+
+  usernamesubject=new BehaviorSubject<string |null >(this.loggedUserName());
+ 
+   username$ = this.usernamesubject.asObservable();
+
+  setUsername(name:string){
+    debugger;
+  //  localStorage.setItem('user'),
+   localStorage.setItem('user', name);
+
+   const nm=this.loggedUserName();
+  this.usernamesubject.next(nm);
+  }
   getUser() {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
@@ -39,4 +53,12 @@ export class Auth {
   logout() {
     localStorage.removeItem('user');
   }
+
+  loggedUserName():string {
+    debugger;
+    return this.getUser().fullName;
+  }
+  setEmptyUsername() {
+  this.usernamesubject.next('');
+}
 }

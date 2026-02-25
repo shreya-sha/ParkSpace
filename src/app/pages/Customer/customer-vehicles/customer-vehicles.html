@@ -7,7 +7,7 @@
           <div class="row g-3">
             <div class="col-12">
                 <label class="form-label">Vehicle Number</label>
-                <input class="form-control custom-input" placeholder="MH12AB1234" formControlName="vehicleNumber" />
+                <input class="form-control custom-input" placeholder="MH..." formControlName="vehicleNumber" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Brand</label>
@@ -28,7 +28,13 @@
                 </select>
             </div>
             <div class="col-12 d-grid">
+              @if(IsUpdate){
+                 <button class="btn btn-primary" type="submit" (click)="UpdateVehicle()">Update Vehicle</button>
+              }
+              @else{
                 <button class="btn btn-primary" type="submit" (click)="AddVehicle()">Save Vehicle</button>
+              }
+                
             </div>
           </div>
         </div>
@@ -49,7 +55,7 @@
                 <div class="col-3 cell">{{veh.vehicleBrand}}</div>
                 <div class="col-2 cell">{{veh.vehicleModel}}</div>
                 <div class="col-2 cell">{{veh.carSize}}</div>
-                <div class="col-2 cell"><a href="#">Edit</a></div>
+                <div class="col-2 cell"><button class="btn btn-primary" type="submit" (click)="OnEdit(veh.vehicleId)">Edit</button></div>
             </div>
         }
           </div>

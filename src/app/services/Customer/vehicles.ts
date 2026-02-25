@@ -20,4 +20,12 @@ export class Vehicles {
     const UserId= this.authSer.getUserId()
     return this.http.get<IResponse>(links.GetVehiclesByUserID + UserId);
   }
+  GetSelectedVehicle(id:number){
+    debugger;
+    return this.http.get<IResponse>(links.GetvehicleById + id)
+  }
+  UpdateVehicle(id:number,vehobj:Car){
+    debugger;
+    return this.http.put(links.EditVehicle + id ,vehobj)
+  }
 }

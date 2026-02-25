@@ -25,5 +25,12 @@ export class ParkingSpaces {
   GetParkingSpaceById(ParkingId:number){
       return this.http.get(links.GetParkingSpaceByID + ParkingId);
   }
+  UpdateParkingSpace(id:number,PrkingObj:parkingSpace){
+    debugger;
+    return this.http.put(links.UpdateParkingSpace +id,PrkingObj);
+  }
+  DeleteParkingSpace(id:number){
+    return this.http.delete(links.DeletePakingSpace + id);
+  }
  
 }

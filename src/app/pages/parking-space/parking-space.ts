@@ -3,8 +3,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ParkingSpaces } from '../../services/parking-space'
 import { Car } from '../../services/Car/car';
 import { NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink ,Router} from '@angular/router';
 import { Auth } from '../../services/auth';
+import { ActivatedRoute } from '@angular/router';
+import { parkingSpace } from '../../models/parkingSpace';
+
 
 @Component({
   selector: 'app-parking-space',
@@ -31,10 +34,43 @@ export class ParkingSpace implements OnInit {
     createdDate: new FormControl(new Date()),
   });
 
-  constructor(private http: ParkingSpaces, private carhttp: Car, private auths: Auth) {
+  ParkingSpaceID_Ed:number =0;
+  isEditmode :boolean =false;
+
+  parkingSpace!:parkingSpace;
+
+
+  constructor(private http: ParkingSpaces, private carhttp: Car, private auths: Auth,private activatedroute:ActivatedRoute,private router:Router) {
 
   }
+  getParkingid(){
+    let id= 
+       this.activatedroute.snapshot.paramMap.get('id');
+        this.ParkingSpaceID_Ed =Number(id) ;
+        debugger;
+
+      if(this.ParkingSpaceID_Ed !=0){
+        this.isEditmode=true;
+        //Read the values first and fill the controls with values
+this.http.GetParkingSpaceById(this.ParkingSpaceID_Ed).subscribe({
+  next:(res:any)=>{
+    debugger;
+  //  this.MonthlyPz = res.data.pricePerMonth;
+    //this.spaceDetails.set([res.data]);
+     this.parkSpaceForm.patchValue(res.data);
+  },
+  error:(err:any)=>{
+
+  }
+})
+
+       
+      }
+   // alert(id);
+  }
   ngOnInit(): void {
+    this.getParkingid();
+
     this.carhttp.getCarSizes().subscribe({
       next: (res: any) => {
         debugger;
@@ -48,6 +84,22 @@ export class ParkingSpace implements OnInit {
       ownerId: OwnerID
 
     });
+  }
+  OnUpdate(){
+       this.UpdateFormcontrols();  //FOR OWNER ID UPDATIONS
+    this.http.UpdateParkingSpace(this.ParkingSpaceID_Ed,this.parkSpaceForm.value).subscribe({
+      next:(res:any)=>{
+             debugger;
+             alert(res.message);
+             this.ResetForm();
+             //navigate to view my listing comp
+             this.router.navigateByUrl('\owner-listings');
+      },
+      error:(err:any)=>{
+
+      }
+    })
+     this.isEditmode=false;
   }
   OnSave() {
     debugger;

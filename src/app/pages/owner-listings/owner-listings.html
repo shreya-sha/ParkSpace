@@ -29,9 +29,9 @@
         <p class="text-secondary mb-2">{{space.city}} | {{space.supportedCarSize}} | INR {{space.pricePerMonth}} / month
         </p>
         <div class="d-flex gap-2">
-          <button class="btn btn-sm btn-outline-primary">Edit</button>
+          <button class="btn btn-sm btn-outline-primary" (click)="OnEdit(space.parkingSpaceId)">Edit</button>
           <button class="btn btn-sm btn-outline-secondary">Add Images</button>
-          <button class="btn btn-sm btn-outline-danger">Delete</button>
+          <button class="btn btn-sm btn-outline-danger"(click)="OnDelete(space.parkingSpaceId)">Delete</button>
         </div>
       </div>
     </div>

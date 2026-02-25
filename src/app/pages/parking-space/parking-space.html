@@ -113,9 +113,16 @@
             </div>
 
             <div class="d-flex flex-wrap gap-2 mt-3">
-                <button class="btn btn-primary px-4" [disabled]="parkSpaceForm.invalid" type="submit" (click)="OnSave()">Save Listing</button>
                
-            </div>
+                @if(isEditmode){
+            <button class="btn btn-primary px-4" [disabled]="parkSpaceForm.invalid" type="submit" (click)="OnUpdate()">Update</button>
+
+                }
+                @else{
+                   <button class="btn btn-primary px-4" [disabled]="parkSpaceForm.invalid" type="submit" (click)="OnSave()">Save Listing</button>
+
+                }
+                           </div>
         </form>
     </section>
 </main>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { login } from '../../models/login';
 import { User } from '../../services/user';
 import { AsyncPipe, NgIf } from '@angular/common';
@@ -21,7 +21,7 @@ export class Login implements OnInit, OnDestroy {
 
   subscription: Subscription[] = [];
 
-  constructor(private http: User,private auth:Auth) {
+  constructor(private http: User,private auth:Auth,private router:Router) {
 
   }
 
@@ -37,7 +37,17 @@ export class Login implements OnInit, OnDestroy {
         form.reset();
         // this.ClearFormcontrols();
            // this.auth.getUser();
-       localStorage.setItem('user', JSON.stringify(res.data));
+      
+      //     localStorage.setItem('user', JSON.stringify(res.data));
+  debugger;
+      this.auth.setUsername(JSON.stringify(res.data));
+
+        if(res.data.roleId==1){
+          this.router.navigateByUrl('park-space');
+        }else{
+          this.router.navigateByUrl('my-vehicles');
+        }
+
 
       },
       error: (err: any) => {

@@ -27,6 +27,7 @@ export class CustomerVehicles implements OnInit {
   carList=signal<any[]>([]);
   vehiclesList=signal<any[]>([]);
 
+  IsUpdate:boolean=false;
 
 
  ngOnInit(): void {
@@ -62,6 +63,8 @@ AddVehicle(){
           debugger;
           alert(res.message);
           this.ResetFormcontrols();
+          
+           this.GetAllVehicles();
   },
   error:(err:any)=>{
 
@@ -71,8 +74,31 @@ AddVehicle(){
 ResetFormcontrols(){
   this.vehicleForm.reset();
 }
+OnEdit(id:number){
+  this.IsUpdate=true ;
+
+  this.vehSer.GetSelectedVehicle(id).subscribe({
+    next:(res:any)=>{
+      debugger;
+      this.vehicleForm .patchValue(res.data);
+        }
+  })
+}
 UpdateVehicle(){
 
+ debugger;
+ const data = this.vehicleForm.value;
+ const vId= this.vehicleForm.controls['vehicleId'].value
+ this.vehSer.UpdateVehicle(vId,data).subscribe({
+  next:(res:any)=>{
+    debugger;
+       alert(res.message);
+        this.ResetFormcontrols();
+        this.GetAllVehicles();
+  }
+ })
+
+  this.IsUpdate=false;
 }
 DeleteVehicle(){
 

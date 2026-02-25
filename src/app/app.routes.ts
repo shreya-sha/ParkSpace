@@ -46,6 +46,10 @@ export const routes: Routes =
                 path:'park-space',
                 component:ParkingSpace
             },
+               {
+                path:'park-space/:id',
+                component:ParkingSpace
+            },
             {
                 path:'owner-listings',
                 component:OwnerListings

@@ -8,7 +8,7 @@
     <div class="col-lg-6">
       <form [formGroup]="userform">
         <div class="form-card animated-pop delay-1">
-          <h4 class="mb-3"><i class="bi bi-car-front-fill"></i><i class="fa fa-user"></i> Customer Registration</h4>
+          <h4 class="mb-3"><i class="bi bi-car-front-fill"></i><i class="fa fa-user"></i> Customer/Owner Registration</h4>
           <div class="row g-3">
 
             <div class="col-md-6">
@@ -53,7 +53,11 @@
                     Roll is required
                   </small>
                 </div>
-                <option [value]="item.roleId" *ngFor="let item of UserRoles$ |async"> {{item.roleName}}</option>
+                <!-- <option [value]="item.roleId" *ngFor="let item of UserRoles$ |async"> {{item.roleName}}</option> -->
+                   <option [value]="item.roleId" *ngFor="let item of UserRoles$ |async">
+                     {{ item.roleName === 'Customer' ? 'Do you want to book parking?' : item.roleName==='Owner'?'Do you want to host parking?':'-' }}
+                   </option>  
+
               </select>
             </div>
             <div class="col-md-6"><label class="form-label">City</label>
@@ -70,7 +74,7 @@
 
             </div>
             <div class="col-12 d-grid">
-              <button type="submit" (click)="OnRegister()" class="btn btn-primary" [disabled]="userform.invalid">Register as Customer</button>
+              <button type="submit" (click)="OnRegister()" class="btn btn-primary" [disabled]="userform.invalid">Register</button>
             </div>
             <!-- </form>   -->
           </div>
