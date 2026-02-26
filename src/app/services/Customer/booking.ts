@@ -1,7 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { links } from '../../constants/urls';
+import { BASE_URL,API_METHODS,Controllers } from '../../constants/urls';
 import { parkingBookings } from '../../models/ParkingBookings';
+import { Observable } from 'rxjs';
+import { IResponse } from '../../models/IResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,9 @@ export class Booking {
   constructor(){
 
   }
-  AddBooking(bookingobj:parkingBookings){
-     return this.http.post(links.PostBooking,bookingobj);
+  AddBooking(bookingobj:parkingBookings):Observable<parkingBookings>{
+    debugger;
+    let s=BASE_URL.BASELINK + Controllers.PARKSPACEBOOKINGS + API_METHODS.BOOKING_CREATE;
+     return this.http.post<any>(BASE_URL.BASELINK + Controllers.PARKSPACEBOOKINGS + API_METHODS.BOOKING_CREATE, bookingobj);//links.PostBooking,bookingobj);
   }
 }

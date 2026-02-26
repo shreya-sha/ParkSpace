@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { links } from '../constants/urls';
+import { BASE_URL,API_METHODS,Controllers } from '../constants/urls';
 import { login } from '../models/login';
 import { IResponse } from '../models/IResponse';
 @Injectable({
@@ -16,7 +16,7 @@ export class User {
    }
 
    getAllRoles():Observable<any[]>{
-       return this.http.get(links.GetRoles)
+       return this.http.get(BASE_URL.BASELINK + Controllers.PARKINGROLES + API_METHODS.ROLES_GETALL) //links.GetRoles)
        .pipe(map((res:any)=>{
           return res.data;
         })
@@ -24,12 +24,12 @@ export class User {
        
    }
    PostUser(obj:User):Observable<IResponse>{
-    return this.http.post<IResponse>(links.RegUser,obj);
+    return this.http.post<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGUSERS + API_METHODS.REG_USER ,obj); //links.RegUser,obj);
 
    }
 
    PostLogin(obj:login):Observable<IResponse>{
-    return this.http.post<IResponse>(links.LoginUser,obj);
+    return this.http.post<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGUSERS + API_METHODS.LOGINN,obj);//links.LoginUser,obj);
    }
 
 }

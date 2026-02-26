@@ -1,7 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { links } from '../constants/urls';
+import { BASE_URL,API_METHODS,Controllers } from '../constants/urls';
 import { parkingSpace } from '../models/parkingSpace';
+import { Observable } from 'rxjs';
+import { IResponse } from '../models/IResponse';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,25 +14,27 @@ export class ParkingSpaces {
 
   }
 
-  PostParkingSpace(obj:parkingSpace){
-    return this.http.post(links.PostParkSpace,obj);
+  PostParkingSpace(obj:parkingSpace):Observable<IResponse>{
+    return this.http.post<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGSPACES + API_METHODS.PARKING_POST ,obj);//links.PostParkSpace,obj);
   }
 
   SearchParkingSpaces(obj:any){
-    return this.http.post(links.SearchParkingSpace,obj);
+    return this.http.post(BASE_URL.BASELINK + Controllers.PARKINGSPACES + API_METHODS.PARKING_SEARCH ,obj);//links.SearchParkingSpace,obj);
   }
   GetAllSpaces(){
-    return this.http.get(links.GetAllParkingSpaces);
-  }
-  GetParkingSpaceById(ParkingId:number){
-      return this.http.get(links.GetParkingSpaceByID + ParkingId);
-  }
-  UpdateParkingSpace(id:number,PrkingObj:parkingSpace){
     debugger;
-    return this.http.put(links.UpdateParkingSpace +id,PrkingObj);
+     let s=BASE_URL.BASELINK + Controllers.PARKINGSPACES + API_METHODS.PARKING_GETALL;
+    return this.http.get(s);//links.GetAllParkingSpaces);
+  }
+  GetParkingSpaceById(ParkingId:number):Observable<IResponse>{
+      return this.http.get<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGSPACES + API_METHODS.PARKING_GET_ID + ParkingId);//links.GetParkingSpaceByID + ParkingId);
+  }
+  UpdateParkingSpace(id:number,PrkingObj:parkingSpace):Observable<IResponse>{
+    debugger;
+    return this.http.put<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGSPACES + API_METHODS.PARKING_UPDATE + id ,PrkingObj);//links.UpdateParkingSpace +id,PrkingObj);
   }
   DeleteParkingSpace(id:number){
-    return this.http.delete(links.DeletePakingSpace + id);
+    return this.http.delete(BASE_URL.BASELINK + Controllers.PARKINGSPACES + API_METHODS.PARKING_DELETE +id);//links.DeletePakingSpace + id);
   }
  
 }

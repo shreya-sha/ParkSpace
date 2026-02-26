@@ -5,7 +5,7 @@ import { Vehicles } from '../../services/Customer/vehicles';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Auth } from '../../services/auth';
 import { Booking } from '../../services/Customer/booking';
-
+import { IResponse } from '../../models/IResponse';
 @Component({
   selector: 'app-parking-space-details',
   imports: [ReactiveFormsModule],
@@ -90,7 +90,11 @@ OnSave(){
     next:(res:any)=>{
       debugger;
       alert(res.message);
+    },
+    error:(err:any)=>{
+      alert(err.error.message);
     }
   })
 }
+
 }

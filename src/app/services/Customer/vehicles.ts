@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { links } from '../../constants/urls';
+import { BASE_URL,API_METHODS,Controllers } from '../../constants/urls';
 import { Car } from '../Car/car';
 import { Observable } from 'rxjs';
 import { IResponse } from '../../models/IResponse';
@@ -13,19 +13,20 @@ export class Vehicles {
 
   }
   AddVehicle(vehicle:Car):Observable<IResponse>{
-   return this.http.post<IResponse>(links.PostVehicle,vehicle);
+   return this.http.post<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGVEHICLES + API_METHODS.VEHICLE_CREATE , vehicle);//links.PostVehicle,vehicle);
   }
   getAllVehicles():Observable<IResponse>{ 
     debugger;
     const UserId= this.authSer.getUserId()
-    return this.http.get<IResponse>(links.GetVehiclesByUserID + UserId);
+    return this.http.get<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGVEHICLES + API_METHODS.VEH_GET_BYUSERID + UserId);//links.GetVehiclesByUserID + UserId);
   }
   GetSelectedVehicle(id:number){
     debugger;
-    return this.http.get<IResponse>(links.GetvehicleById + id)
+    return this.http.get<IResponse>(BASE_URL.BASELINK + Controllers.PARKINGVEHICLES + API_METHODS.VEH_GET_BYID + id);//links.GetvehicleById + id)
   }
   UpdateVehicle(id:number,vehobj:Car){
     debugger;
-    return this.http.put(links.EditVehicle + id ,vehobj)
+    let s=BASE_URL.BASELINK + Controllers.PARKINGVEHICLES + API_METHODS.VEH_UPDATE +id ;
+    return this.http.put( s,vehobj );//links.EditVehicle + id ,vehobj)
   }
 }
